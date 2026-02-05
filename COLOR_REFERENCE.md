@@ -1,45 +1,44 @@
-# Wellthy Color Reference Card
+# Wellthy Color Reference Card v2
 
 Quick reference for developers. For full guidelines, see [BRAND.md](BRAND.md).
 
 ---
 
-## 🎨 Brand Gradient (Primary)
+## 🎨 Color System (Hybrid Approach)
 
+### Brand Identity (Logo & Icon)
 ```
-Emerald Green → Cyan/Turquoise
-#10B981 → #06B6D4
+Emerald Green → Cyan: #10B981 → #06B6D4
 ```
+**Use for:** App icon, logo, splash screen, brand moments
 
-**Use for:**
-- Primary CTAs
-- Active tab states
-- Hero sections
-- Main branding
+### Primary Actions (STEPN-Inspired)
+```
+Bright Cyan-Green: #00E5A0
+CTA Gradient: #00E5A0 → #00D4FF
+```
+**Use for:** Primary buttons, active tabs, high-emphasis CTAs
 
 ---
 
 ## 🎭 Collectible Rarity Colors
 
-### Common (Cyan)
+### Common (Bright Cyan)
 ```
-Base: #06B6D4
-Light: #22D3EE
-Gradient: ['#06B6D4', '#22D3EE']
+Base: #00D4FF
+Gradient: ['#00D4FF', '#00A8CC']
 ```
 
 ### Rare (Purple)
 ```
-Base: #8B5CF6
-Light: #A78BFA
-Gradient: ['#8B5CF6', '#A78BFA']
+Base: #9D7EFF
+Gradient: ['#9D7EFF', '#B794FF']
 ```
 
-### Epic (Yellow/Gold)
+### Epic (Gold)
 ```
-Base: #FBBF24
-Light: #F59E0B
-Gradient: ['#FBBF24', '#F59E0B']
+Base: #FFD700
+Gradient: ['#FFD700', '#FFC300']
 ```
 
 ---
@@ -47,19 +46,19 @@ Gradient: ['#FBBF24', '#F59E0B']
 ## ✅ Semantic Colors
 
 ```javascript
-success: '#10B981',  // Emerald (matches brand)
-warning: '#FBBF24',  // Yellow
+success: '#10B981',  // Emerald (brand green)
+warning: '#FFD700',  // Gold
 error: '#EF4444',    // Red
 ```
 
 ---
 
-## 🌑 Dark Base
+## 🌑 Dark Base (STEPN-Inspired)
 
 ```javascript
-background: '#0F0F1E',      // Main app background
-surface: '#1A1A2E',         // Cards, containers
-surfaceLight: '#252541',    // Secondary surfaces
+background: '#1A1A1A',      // Main app background (darker)
+surface: '#2A2A2A',         // Cards, containers
+surfaceLight: '#353535',    // Secondary surfaces
 ```
 
 ---
@@ -68,7 +67,7 @@ surfaceLight: '#252541',    // Secondary surfaces
 
 ```javascript
 text: '#FFFFFF',            // Primary text
-textSecondary: '#B2B2C9',   // Subtitles, descriptions
+textSecondary: '#8F8F8F',   // Subtitles, descriptions (adjusted for darker base)
 textTertiary: '#6C6C89',    // Metadata, timestamps
 ```
 
@@ -82,13 +81,27 @@ textTertiary: '#6C6C89',    // Metadata, timestamps
 import { LinearGradient } from 'expo-linear-gradient';
 import { Colors } from '../constants/colors';
 
-// Primary brand button
+// Primary action button (CTA)
 <LinearGradient
-  colors={Colors.gradientPrimary}
+  colors={Colors.gradientCTA}
+  start={{ x: 0, y: 0 }}
+  end={{ x: 1, y: 0 }}
+  style={{
+    shadowColor: Colors.ctaBright,
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+  }}
+>
+  <Text style={{ color: '#1A1A1A' }}>Sync Activity</Text>
+</LinearGradient>
+
+// Brand moment (logo, splash)
+<LinearGradient
+  colors={Colors.gradientBrand}
   start={{ x: 0, y: 0 }}
   end={{ x: 1, y: 0 }}
 >
-  {/* Button content */}
+  {/* Wellthy logo */}
 </LinearGradient>
 
 // Common collectible card
@@ -104,23 +117,29 @@ import { Colors } from '../constants/colors';
 ### CSS (Website)
 
 ```css
-/* Primary brand gradient */
+/* Primary CTA gradient (title, buttons) */
 .hero-title {
-  background: linear-gradient(135deg, #10B981 0%, #06B6D4 100%);
+  background: linear-gradient(135deg, #00E5A0 0%, #00D4FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Button */
+/* CTA Button */
 .primary-button {
+  background: linear-gradient(135deg, #00E5A0, #00D4FF);
+  color: #1A1A1A;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 229, 160, 0.3);
+}
+
+/* Brand logo */
+.logo {
   background: linear-gradient(135deg, #10B981, #06B6D4);
-  color: #FFFFFF;
-  border-radius: 16px;
 }
 
 /* Rarity card (Common) */
 .common-card {
-  background: linear-gradient(135deg, #06B6D4, #22D3EE);
+  background: linear-gradient(135deg, #00D4FF, #00A8CC);
 }
 ```
 
@@ -129,16 +148,19 @@ import { Colors } from '../constants/colors';
 ## 🚦 Do's & Don'ts
 
 ### ✅ Do
-- Use brand gradient for primary actions
+- Use CTA bright green (#00E5A0) for primary action buttons
+- Use brand gradient (emerald → cyan) for logo/icon
+- Use dark text (#1A1A1A) on bright buttons
+- Add glow shadows to CTAs for depth
 - Maintain contrast ratios (WCAG AA)
 - Keep rarity colors consistent
-- Use semantic colors for feedback
 
 ### ❌ Don't
-- Mix rarity gradients (no cyan + purple)
-- Use light text on light backgrounds
-- Change brand gradient colors
+- Mix brand gradient with CTA gradient on same screen
+- Use brand gradient for action buttons (use CTA instead)
+- Use light text on bright buttons (use dark #1A1A1A)
 - Overuse yellow (reserve for Epic + warnings)
+- Change core brand or CTA colors
 
 ---
 
@@ -148,16 +170,23 @@ import { Colors } from '../constants/colors';
 ```typescript
 // In constants/colors.ts
 export const Colors = {
-  primary: '#10B981',
-  primaryLight: '#06B6D4',
-  gradientPrimary: ['#10B981', '#06B6D4'],
+  // Brand identity
+  brandGreen: '#10B981',
+  brandCyan: '#06B6D4',
+  gradientBrand: ['#10B981', '#06B6D4'],
   
-  common: '#06B6D4',
-  rare: '#8B5CF6',
-  epic: '#FBBF24',
+  // Primary actions
+  ctaBright: '#00E5A0',
+  gradientCTA: ['#00E5A0', '#00D4FF'],
   
+  // Rarity
+  common: '#00D4FF',
+  rare: '#9D7EFF',
+  epic: '#FFD700',
+  
+  // Semantic
   success: '#10B981',
-  warning: '#FBBF24',
+  warning: '#FFD700',
   error: '#EF4444',
 };
 ```
@@ -165,11 +194,12 @@ export const Colors = {
 ### Website (CSS)
 ```css
 :root {
-  --primary: #10B981;
-  --primary-light: #06B6D4;
-  --common: #06B6D4;
-  --rare: #8B5CF6;
-  --epic: #FBBF24;
+  --brand-green: #10B981;
+  --brand-cyan: #06B6D4;
+  --cta-bright: #00E5A0;
+  --common: #00D4FF;
+  --rare: #9D7EFF;
+  --epic: #FFD700;
   --success: #10B981;
 }
 ```
@@ -180,12 +210,13 @@ export const Colors = {
 
 | Gradient | When to Use |
 |----------|-------------|
-| **Primary** (Green→Cyan) | Main CTAs, hero sections, active tabs |
-| **Cyan** | Common collectibles, secondary actions |
+| **Brand** (Emerald→Cyan) | Logo, app icon, splash screen, brand moments |
+| **CTA** (Bright Green→Cyan) | Primary buttons, active tabs, high-emphasis actions |
+| **Cyan** (Bright) | Common collectibles |
 | **Purple** | Rare collectibles |
 | **Gold** | Epic collectibles, premium features |
-| **Green** | Success states, achievements |
+| **Success** (Emerald) | Success states, achievements, credits earned |
 
 ---
 
-**Last updated:** 2024 (Brand refresh)
+**Last updated:** 2024 v2 (STEPN-inspired update: hybrid brand + CTA system)

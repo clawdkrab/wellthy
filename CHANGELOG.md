@@ -6,16 +6,39 @@ All notable changes to Wellthy will be documented in this file.
 
 ## [Unreleased]
 
-### Brand Update (2024)
-**Visual Identity Refresh**
+### STEPN-Inspired UI Update (2024 v2)
+**Hybrid Color System: Brand Identity + Action Energy**
+
+#### Added
+- **CTA Colors:** Bright cyan-green (#00E5A0) for primary action buttons
+- **STEPN Patterns:** Darker base, bright gradients, glow shadows
+- **Accent Colors:** Pink (#FF6BA0), brighter yellow (#FFD700), purple (#9D7EFF)
+- **Rarity Badges:** STEPN-style badges at top of collectible cards
+- **Card Borders:** Subtle rgba borders for depth
 
 #### Changed
-- **Color Palette:** Updated from purple-based to emerald green → cyan brand gradient
+- **Base Colors:** Darker backgrounds (#1A1A1A, was #0F0F1E) for better focus
+- **Surface Colors:** Darker cards (#2A2A2A, was #1A1A2E) with borders
+- **Button Text:** Dark text on bright buttons (STEPN style)
+- **Tab Active State:** Bright green (#00E5A0, was emerald #10B981)
+- **Collectible Gradients:** Brighter, more energetic colors
+- **Color Philosophy:** Brand gradient (emerald → cyan) for logo/identity, bright CTA for actions
+
+#### Documentation
+- Added `STEPN_ANALYSIS.md` - Design reconciliation document
+- Updated `COLOR_REFERENCE.md` - New hybrid color system
+- Explains when to use brand vs CTA colors
+
+### Brand Update (2024 v1)
+**Initial Visual Identity**
+
+#### Changed
+- **Color Palette:** Initial brand based on app icon
   - Primary: `#10B981` (emerald green) → `#06B6D4` (cyan/turquoise)
-  - Success states now use brand green
-  - Common collectibles: cyan (was blue)
-  - Rare collectibles: purple (refined shade)
-  - Epic collectibles: yellow/gold (accent color)
+  - Success states use brand green
+  - Common collectibles: cyan
+  - Rare collectibles: purple
+  - Epic collectibles: yellow/gold
 
 #### Updated Components
 - **App:**
