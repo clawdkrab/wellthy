@@ -6,7 +6,7 @@ import { Colors } from '../constants/colors';
 interface ButtonProps {
   title: string;
   onPress: () => void;
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: 'primary' | 'secondary' | 'outline' | 'tertiary';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
   style?: ViewStyle;
@@ -30,7 +30,10 @@ export const Button: React.FC<ButtonProps> = ({
   const textStyle: TextStyle = {
     ...styles.text,
     ...styles[`text_${size}`],
-    color: variant === 'outline' ? Colors.ctaBright : variant === 'primary' ? '#1A1A1A' : Colors.text,
+    color: variant === 'outline' ? Colors.ctaBright : 
+           variant === 'primary' ? '#1A1A1A' : 
+           variant === 'tertiary' ? Colors.textSecondary : 
+           Colors.text,
   };
   
   if (variant === 'primary' && !disabled) {
@@ -66,6 +69,7 @@ export const Button: React.FC<ButtonProps> = ({
         containerStyle,
         variant === 'secondary' && styles.secondary,
         variant === 'outline' && styles.outline,
+        variant === 'tertiary' && styles.tertiary,
       ]}
     >
       <Text style={textStyle}>{title}</Text>
@@ -111,6 +115,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderWidth: 2,
     borderColor: Colors.ctaBright,
+  },
+  tertiary: {
+    backgroundColor: 'transparent',
   },
   disabled: {
     opacity: 0.5,

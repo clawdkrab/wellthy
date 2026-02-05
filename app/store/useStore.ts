@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { UserProfile, DailyActivity, HealthData } from '../types';
-import { loadProfile, saveProfile } from '../services/storage';
+import { loadProfile, saveProfile, loadOnboardingStatus, saveOnboardingStatus } from '../services/storage';
 import { COLLECTIBLES } from '../constants/collectibles';
 
 interface StoreState {
@@ -16,6 +16,11 @@ interface StoreState {
   // Loading states
   isLoading: boolean;
   
+  // Onboarding & Paywall
+  hasCompletedOnboarding: boolean;
+  shouldShowPaywall: boolean;
+  hasSeenPaywall: boolean;
+  
   // Actions
   initializeProfile: () => Promise<void>;
   updateHealthData: (data: HealthData) => void;
@@ -24,6 +29,9 @@ interface StoreState {
   resetStreak: () => void;
   unlockCollectible: (collectibleId: string) => void;
   setSubscription: (tier: 'monthly' | 'yearly') => void;
+  completeOnboarding: () => Promise<void>;
+  checkPaywallTrigger: () => void;
+  dismissPaywall: () => void;
 }
 
 const getToday = () => new Date().toISOString().split('T')[0];
@@ -35,18 +43,30 @@ export const useStore = create<StoreState>((set, get) => ({
     lastActiveDate: getToday(),
     unlockedCollectibles: ['sneaker-classic-white'], // Starter collectible
     isSubscriber: false,
+    completedDays: 0,
   },
   
   todayActivity: null,
   healthData: null,
   isLoading: true,
+  hasCompletedOnboarding: false,
+  shouldShowPaywall: false,
+  hasSeenPaywall: false,
   
   initializeProfile: async () => {
     try {
-      const savedProfile = await loadProfile();
+      const [savedProfile, onboardingStatus] = await Promise.all([
+        loadProfile(),
+        loadOnboardingStatus(),
+      ]);
       
       if (savedProfile) {
-        set({ profile: savedProfile, isLoading: false });
+        set({ 
+          profile: savedProfile, 
+          isLoading: false,
+          hasCompletedOnboarding: onboardingStatus.completed,
+          hasSeenPaywall: onboardingStatus.hasSeenPaywall || false,
+        });
         
         // Check if streak should be reset
         const today = getToday();
@@ -58,6 +78,9 @@ export const useStore = create<StoreState>((set, get) => ({
           // Streak broken
           get().resetStreak();
         }
+        
+        // Check if paywall should be triggered
+        get().checkPaywallTrigger();
       } else {
         // First time user
         set({ isLoading: false });
@@ -134,10 +157,14 @@ export const useStore = create<StoreState>((set, get) => ({
       ...profile,
       streak: profile.streak + 1,
       lastActiveDate: today,
+      completedDays: (profile.completedDays || 0) + 1,
     };
     
     set({ profile: updatedProfile });
     saveProfile(updatedProfile);
+    
+    // Check paywall trigger after incrementing
+    get().checkPaywallTrigger();
   },
   
   resetStreak: () => {
@@ -175,5 +202,40 @@ export const useStore = create<StoreState>((set, get) => ({
     
     set({ profile: updatedProfile });
     saveProfile(updatedProfile);
+  },
+  
+  completeOnboarding: async () => {
+    set({ hasCompletedOnboarding: true });
+    await saveOnboardingStatus({ completed: true, hasSeenPaywall: false });
+  },
+  
+  checkPaywallTrigger: () => {
+    const { profile, hasCompletedOnboarding, hasSeenPaywall } = get();
+    
+    // Paywall triggers after Day 2 completion
+    // User must have:
+    // - completed onboarding
+    // - completed at least 2 days
+    // - a streak of at least 2
+    // - earned some credits
+    // - not yet subscribed
+    // - not already seen paywall
+    const shouldShow = 
+      hasCompletedOnboarding &&
+      !profile.isSubscriber &&
+      !hasSeenPaywall &&
+      (profile.completedDays || 0) >= 2 &&
+      profile.streak >= 2 &&
+      profile.totalCredits > 0;
+    
+    set({ shouldShowPaywall: shouldShow });
+  },
+  
+  dismissPaywall: () => {
+    set({ shouldShowPaywall: false, hasSeenPaywall: true });
+    saveOnboardingStatus({ 
+      completed: true, 
+      hasSeenPaywall: true 
+    });
   },
 }));

@@ -26,6 +26,12 @@ export interface UserProfile {
   unlockedCollectibles: string[]; // Array of collectible IDs
   isSubscriber: boolean;
   subscriptionTier?: 'monthly' | 'yearly';
+  completedDays?: number; // Total days with activity
+}
+
+export interface OnboardingStatus {
+  completed: boolean;
+  hasSeenPaywall?: boolean;
 }
 
 export interface Trainer {
