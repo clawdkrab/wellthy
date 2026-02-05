@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Colors - STEPN-inspired palette */
+  --background: #0F0F1E;
+  --surface: #1A1A2E;
+  --surface-light: #252541;
+  
+  --primary: #6C5CE7;
+  --primary-light: #A29BFE;
+  
+  --common: #74B9FF;
+  --rare: #A29BFE;
+  --epic: #FDCB6E;
+  
+  --success: #00D9A3;
+  --text: #FFFFFF;
+  --text-secondary: #B2B2C9;
+  --text-tertiary: #6C6C89;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Gradients */
+.gradient-purple {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+}
+
+.gradient-blue {
+  background: linear-gradient(135deg, #0984E3 0%, var(--common) 100%);
+}
+
+.gradient-gold {
+  background: linear-gradient(135deg, var(--epic) 0%, #FFA502 100%);
+}
+
+.gradient-success {
+  background: linear-gradient(135deg, var(--success) 0%, #00B894 100%);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+}
