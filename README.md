@@ -175,10 +175,13 @@ npm run dev
 ## 🎨 Design Principles
 
 - **Bright, arty, colourful** – STEPN-inspired energy
-- **Dark UI base** with colour accents
+- **Brand gradient:** Emerald green → cyan/turquoise (from app icon)
+- **Dark UI base** (#0F0F1E) with vibrant accent colors
 - **Soft gradients**, abstract shapes, playful iconography
 - **Not clinical** – fitness should feel alive, not like a hospital app
 - **Mobile-first** – every interaction optimised for thumbs
+
+**See [BRAND.md](BRAND.md) for complete brand guidelines.**
 
 ---
 

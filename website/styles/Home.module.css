@@ -13,7 +13,7 @@
   font-size: 72px;
   font-weight: 900;
   margin-bottom: 16px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  background: linear-gradient(135deg, #10B981 0%, #06B6D4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -44,7 +44,7 @@
   font-size: 18px;
   font-weight: 700;
   color: var(--text);
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  background: linear-gradient(135deg, #10B981 0%, #06B6D4 100%);
   border: none;
   border-radius: 16px;
   transition: transform 0.2s;
@@ -143,15 +143,15 @@
 }
 
 .rarityCard.common {
-  background: linear-gradient(135deg, #0984E3 0%, var(--common) 100%);
+  background: linear-gradient(135deg, #06B6D4 0%, #22D3EE 100%);
 }
 
 .rarityCard.rare {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);
 }
 
 .rarityCard.epic {
-  background: linear-gradient(135deg, var(--epic) 0%, #FFA502 100%);
+  background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
 }
 
 .rarityEmoji {

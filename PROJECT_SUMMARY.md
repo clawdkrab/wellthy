@@ -97,7 +97,8 @@ A static marketing website with STEPN-inspired aesthetic:
 
 **Design:**
 - Dark base (#0F0F1E)
-- Vibrant gradients (purple, blue, gold)
+- Brand gradient: Emerald green (#10B981) → Cyan (#06B6D4)
+- Rarity tiers: Cyan (Common), Purple (Rare), Gold (Epic)
 - Large emoji for personality
 - No hype language
 - Trust-focused copy

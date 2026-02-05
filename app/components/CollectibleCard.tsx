@@ -29,13 +29,13 @@ export const CollectibleCard: React.FC<CollectibleCardProps> = ({
   const getGradient = () => {
     switch (collectible.rarity) {
       case 'Common':
-        return Colors.gradientBlue;
+        return Colors.gradientCyan;
       case 'Rare':
         return Colors.gradientPurple;
       case 'Epic':
         return Colors.gradientGold;
       default:
-        return Colors.gradientBlue;
+        return Colors.gradientCyan;
     }
   };
   

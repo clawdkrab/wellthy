@@ -52,7 +52,7 @@ const HomeScreen = () => {
         
         {/* Main Status Card */}
         <LinearGradient
-          colors={hasMovedToday ? Colors.gradientSuccess : Colors.gradientPurple}
+          colors={hasMovedToday ? Colors.gradientGreen : Colors.gradientPrimary}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={styles.heroCard}

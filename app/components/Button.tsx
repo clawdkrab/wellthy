@@ -37,7 +37,7 @@ export const Button: React.FC<ButtonProps> = ({
     return (
       <TouchableOpacity onPress={onPress} disabled={disabled} activeOpacity={0.8}>
         <LinearGradient
-          colors={Colors.gradientPurple}
+          colors={Colors.gradientPrimary}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           style={containerStyle}

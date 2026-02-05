@@ -5,19 +5,19 @@
 }
 
 :root {
-  /* Colors - STEPN-inspired palette */
+  /* Colors - Wellthy brand palette (emerald green → cyan gradient) */
   --background: #0F0F1E;
   --surface: #1A1A2E;
   --surface-light: #252541;
   
-  --primary: #6C5CE7;
-  --primary-light: #A29BFE;
+  --primary: #10B981; /* Emerald green */
+  --primary-light: #06B6D4; /* Cyan/turquoise */
   
-  --common: #74B9FF;
-  --rare: #A29BFE;
-  --epic: #FDCB6E;
+  --common: #06B6D4; /* Cyan */
+  --rare: #8B5CF6; /* Purple */
+  --epic: #FBBF24; /* Yellow/gold */
   
-  --success: #00D9A3;
+  --success: #10B981;
   --text: #FFFFFF;
   --text-secondary: #B2B2C9;
   --text-tertiary: #6C6C89;
@@ -43,20 +43,20 @@ button {
 }
 
 /* Gradients */
-.gradient-purple {
+.gradient-primary {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
 }
 
-.gradient-blue {
-  background: linear-gradient(135deg, #0984E3 0%, var(--common) 100%);
+.gradient-cyan {
+  background: linear-gradient(135deg, #06B6D4 0%, #22D3EE 100%);
+}
+
+.gradient-purple {
+  background: linear-gradient(135deg, var(--rare) 0%, #A78BFA 100%);
 }
 
 .gradient-gold {
-  background: linear-gradient(135deg, var(--epic) 0%, #FFA502 100%);
-}
-
-.gradient-success {
-  background: linear-gradient(135deg, var(--success) 0%, #00B894 100%);
+  background: linear-gradient(135deg, var(--epic) 0%, #F59E0B 100%);
 }
 
 /* Container */
