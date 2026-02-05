@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   specialtyBadge: {
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.ctaBright,
     paddingVertical: 4,
     paddingHorizontal: 10,
     borderRadius: 12,
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   specialtyText: {
     fontSize: 12,
     fontWeight: '600',
-    color: Colors.text,
+    color: '#1A1A1A',
   },
   trainerBio: {
     fontSize: 15,

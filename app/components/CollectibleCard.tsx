@@ -29,11 +29,11 @@ export const CollectibleCard: React.FC<CollectibleCardProps> = ({
   const getGradient = () => {
     switch (collectible.rarity) {
       case 'Common':
-        return Colors.gradientCyan;
+        return Colors.gradientCyan; // Bright cyan
       case 'Rare':
-        return Colors.gradientPurple;
+        return Colors.gradientPurple; // Purple
       case 'Epic':
-        return Colors.gradientGold;
+        return Colors.gradientGold; // Gold
       default:
         return Colors.gradientCyan;
     }
@@ -42,19 +42,26 @@ export const CollectibleCard: React.FC<CollectibleCardProps> = ({
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={isUnlocked ? getGradient() : ['#252541', '#1A1A2E']}
+        colors={isUnlocked ? getGradient() : ['#353535', '#2A2A2A']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.card}
       >
+        {/* STEPN-style rarity badge */}
+        <View style={[
+          styles.rarityBadge,
+          { backgroundColor: isUnlocked ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.05)' }
+        ]}>
+          <Text style={[styles.rarityBadgeText, !isUnlocked && { opacity: 0.5 }]}>
+            {collectible.rarity.toUpperCase()}
+          </Text>
+        </View>
+        
         <Text style={[styles.image, !isUnlocked && styles.locked]}>
           {collectible.image}
         </Text>
         
         <View style={styles.info}>
-          <Text style={[styles.rarity, { color: getRarityColor() }]}>
-            {collectible.rarity}
-          </Text>
           <Text style={[styles.name, !isUnlocked && styles.lockedText]}>
             {isUnlocked ? collectible.name : '???'}
           </Text>
@@ -88,13 +95,21 @@ const styles = StyleSheet.create({
   locked: {
     opacity: 0.3,
   },
+  rarityBadge: {
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    borderRadius: 12,
+    alignSelf: 'flex-start',
+    marginBottom: 8,
+  },
+  rarityBadgeText: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: Colors.text,
+    letterSpacing: 0.5,
+  },
   info: {
     gap: 4,
-  },
-  rarity: {
-    fontSize: 12,
-    fontWeight: '700',
-    textTransform: 'uppercase',
   },
   name: {
     fontSize: 16,

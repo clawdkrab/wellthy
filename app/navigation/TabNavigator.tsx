@@ -23,8 +23,8 @@ export const TabNavigator = () => {
           paddingBottom: 8,
           height: 70,
         },
-        tabBarActiveTintColor: Colors.primary,
-        tabBarInactiveTintColor: Colors.textTertiary,
+        tabBarActiveTintColor: Colors.ctaBright,
+        tabBarInactiveTintColor: Colors.textSecondary,
         tabBarLabelStyle: {
           fontSize: 11,
           fontWeight: '600',

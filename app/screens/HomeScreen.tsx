@@ -52,7 +52,7 @@ const HomeScreen = () => {
         
         {/* Main Status Card */}
         <LinearGradient
-          colors={hasMovedToday ? Colors.gradientGreen : Colors.gradientPrimary}
+          colors={hasMovedToday ? Colors.gradientSuccess : Colors.gradientCTA}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={styles.heroCard}
@@ -221,12 +221,12 @@ const styles = StyleSheet.create({
   creditsValue: {
     fontSize: 32,
     fontWeight: '800',
-    color: Colors.primary,
+    color: Colors.ctaBright,
     marginTop: 4,
   },
   refreshButton: {
     fontSize: 16,
-    color: Colors.primary,
+    color: Colors.ctaBright,
     fontWeight: '600',
   },
   lastSynced: {

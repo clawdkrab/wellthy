@@ -29,6 +29,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface,
     borderRadius: 20,
     padding: 20,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.05)', // STEPN-style subtle border
   },
   elevated: {
     shadowColor: '#000',

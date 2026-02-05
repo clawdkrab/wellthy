@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: 32,
     fontWeight: '800',
-    color: Colors.primary,
+    color: Colors.ctaBright,
     marginBottom: 4,
   },
   statLabel: {

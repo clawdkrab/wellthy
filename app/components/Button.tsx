@@ -30,19 +30,28 @@ export const Button: React.FC<ButtonProps> = ({
   const textStyle: TextStyle = {
     ...styles.text,
     ...styles[`text_${size}`],
-    color: variant === 'outline' ? Colors.primary : Colors.text,
+    color: variant === 'outline' ? Colors.ctaBright : variant === 'primary' ? '#1A1A1A' : Colors.text,
   };
   
   if (variant === 'primary' && !disabled) {
     return (
       <TouchableOpacity onPress={onPress} disabled={disabled} activeOpacity={0.8}>
         <LinearGradient
-          colors={Colors.gradientPrimary}
+          colors={Colors.gradientCTA}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
-          style={containerStyle}
+          style={[
+            containerStyle,
+            {
+              shadowColor: Colors.ctaBright,
+              shadowOffset: { width: 0, height: 4 },
+              shadowOpacity: 0.3,
+              shadowRadius: 8,
+              elevation: 8,
+            },
+          ]}
         >
-          <Text style={textStyle}>{title}</Text>
+          <Text style={[textStyle, { color: '#1A1A1A' }]}>{title}</Text>
         </LinearGradient>
       </TouchableOpacity>
     );
@@ -101,7 +110,7 @@ const styles = StyleSheet.create({
   outline: {
     backgroundColor: 'transparent',
     borderWidth: 2,
-    borderColor: Colors.primary,
+    borderColor: Colors.ctaBright,
   },
   disabled: {
     opacity: 0.5,

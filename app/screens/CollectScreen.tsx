@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   collectionCount: {
     fontSize: 32,
     fontWeight: '800',
-    color: Colors.primary,
+    color: Colors.ctaBright,
     marginTop: 4,
   },
   creditsBox: {
@@ -207,8 +207,8 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   filterTabActive: {
-    backgroundColor: Colors.primary,
-    color: Colors.text,
+    backgroundColor: Colors.ctaBright,
+    color: '#1A1A1A',
   },
   grid: {
     flexDirection: 'row',

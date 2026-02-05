@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: 28,
     fontWeight: '800',
-    color: Colors.primary,
+    color: Colors.ctaBright,
     marginBottom: 4,
   },
   statLabel: {
@@ -217,12 +217,12 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
   },
   subscriptionBest: {
-    borderColor: Colors.primary,
+    borderColor: Colors.ctaBright,
   },
   bestBadge: {
     position: 'absolute',
     top: -8,
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.ctaBright,
     paddingVertical: 4,
     paddingHorizontal: 12,
     borderRadius: 12,
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
   subscriptionPrice: {
     fontSize: 24,
     fontWeight: '800',
-    color: Colors.primary,
+    color: Colors.ctaBright,
   },
   subscriptionSavings: {
     fontSize: 12,
@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
   subscriberCard: {
     alignItems: 'center',
     gap: 8,
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.ctaBright,
   },
   subscriberEmoji: {
     fontSize: 48,
@@ -259,13 +259,13 @@ const styles = StyleSheet.create({
   subscriberTitle: {
     fontSize: 20,
     fontWeight: '800',
-    color: Colors.text,
+    color: '#1A1A1A',
   },
   subscriberText: {
     fontSize: 15,
-    color: Colors.text,
+    color: '#1A1A1A',
     textAlign: 'center',
-    opacity: 0.9,
+    opacity: 0.8,
   },
   settingsCard: {
     gap: 0,

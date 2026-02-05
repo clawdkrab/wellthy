@@ -13,7 +13,7 @@
   font-size: 72px;
   font-weight: 900;
   margin-bottom: 16px;
-  background: linear-gradient(135deg, #10B981 0%, #06B6D4 100%);
+  background: linear-gradient(135deg, #00E5A0 0%, #00D4FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -43,10 +43,11 @@
   padding: 18px 36px;
   font-size: 18px;
   font-weight: 700;
-  color: var(--text);
-  background: linear-gradient(135deg, #10B981 0%, #06B6D4 100%);
+  color: #1A1A1A;
+  background: linear-gradient(135deg, #00E5A0 0%, #00D4FF 100%);
   border: none;
-  border-radius: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 229, 160, 0.3);
   transition: transform 0.2s;
 }
 
@@ -58,16 +59,16 @@
   padding: 18px 36px;
   font-size: 18px;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--cta-bright);
   background: transparent;
-  border: 2px solid var(--primary);
-  border-radius: 16px;
+  border: 2px solid var(--cta-bright);
+  border-radius: 12px;
   transition: all 0.2s;
 }
 
 .secondaryButton:hover {
-  background: var(--primary);
-  color: var(--text);
+  background: var(--cta-bright);
+  color: #1A1A1A;
 }
 
 /* Sections */
@@ -143,15 +144,15 @@
 }
 
 .rarityCard.common {
-  background: linear-gradient(135deg, #06B6D4 0%, #22D3EE 100%);
+  background: linear-gradient(135deg, #00D4FF 0%, #00A8CC 100%);
 }
 
 .rarityCard.rare {
-  background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);
+  background: linear-gradient(135deg, #9D7EFF 0%, #B794FF 100%);
 }
 
 .rarityCard.epic {
-  background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+  background: linear-gradient(135deg, #FFD700 0%, #FFC300 100%);
 }
 
 .rarityEmoji {
